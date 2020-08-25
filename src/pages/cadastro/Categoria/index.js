@@ -32,8 +32,10 @@ function CadastroCategoria() {
   // ============
 
   useEffect(() => {
-    if(window.location.href.includes('localhost')) {
-      const URL = 'https://react-danflix.herokuapp.com/categorias'; 
+    const URL= window.location.href.includes('localhost') 
+    ? 'http://localhost:8080/categorias' 
+    : 'https://react-danflix.herokuapp.com/categorias'; 
+    
       fetch(URL)
        .then(async (respostaDoServer) =>{
         if(respostaDoServer.ok) {
@@ -43,7 +45,7 @@ function CadastroCategoria() {
         }
         throw new Error('Não foi possível pegar os dados');
        })
-    }    
+       
   }, []);
 
   return (
